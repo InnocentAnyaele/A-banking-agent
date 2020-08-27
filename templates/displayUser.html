@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Users</title>
+    <link rel="icon" href="/static/img/kwesi2.png" type="image/icon type"/>
+</head>
+<body>
+    <h3>Users</h3>
+    {% for user in users %}
+    Id: {{user.id}} <br><br>
+    FirstName: {{user.FirstName}} <br><br>
+    LastName: {{user.LastName}} <br><br>
+    MiddleName: {{user.MiddleName}} <br><br>
+    DateCreated: {{user.date_created}} <br><br>
+    DoB: {{user.DoB}} <br><br>
+    AccountNumber: {{user.AccountNumber}} <br><br>
+    Phone: {{user.Phone}} <br><br>
+    Residential Address: {{user.ResidentialAddress}} <br><br>
+    Balance: {{user.Balance}} <br><br>
+    Account Freeze: {{user.AccountFreeze}} <br><br>
+    Card Number: {{user.CardNumber}} <br><br>
+    Spend Limit: {{user.SpendLimit}} <br><br>
+    Card Block: {{user.CardBlock}} <br><br>
+    Travel Notification: {{user.TravelNotification}} <br><br>
+    Credit Score: {{user.CreditScore}} <br><br>
+    ATM Pin: {{user.ATMPin}} <br><br>
+    <hr>
+    {% endfor %}
+
+</body>
+</html>

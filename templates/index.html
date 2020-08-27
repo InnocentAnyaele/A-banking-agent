@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js" integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ==" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <title>Kwesi - The Bank Agent</title>
+    <link rel="icon" href="/static/img/kwesi2.png" type="image/icon type"/>
+</head>
+<body>
+    <form id="form">
+
+        <cf-robot-message cf-questions="Hi! I'm Kwesi, your chat bank agent" ></cf-robot-message>
+<!-- 
+        <select type="text" name="cfc-services" cf-questions="How may i help you?" cf-error="PLease enter a valid service">
+            <option value="open-account">Open an account</option>
+            <option value="nearest-branch">Nearest branch</option>
+            <option value="about-bank">About bank</option>
+            <option value="opening-hours">Opening hours</option>
+            <option value="account-types">Account types</option>
+            <option value="interest-rates">Interest Rates</option>
+            <option value="bank-settings">Bank settings</option>
+            <option value="check-balance">Check balance</option>
+            <option value="transfer-money">Transfer money</option>
+        </select> -->
+
+        <!-- Services -->
+        <fieldset cf-questions="How may i help you? <br> Type 'quit' to exit a process" cf-error="Please enter a valid service">
+
+            <!-- Non-Authenticated services -->
+            <!-- Open account -->
+            <input type="radio" name="cfc-services" id="services-open-account" value="open-account" class="form-control" cf-label="Open account">
+            <!-- Nearest Branch -->
+            <input type="radio" name="cfc-services" id="services-nearest-branch" value="nearest-branch" class="form-control" cf-label="Nearest Branch">      
+            <!-- About bank -->
+            <input type="radio" name="cfc-services" id="services-about-bank" value="about-bank" class="form-control" cf-label="About bank">
+            <!-- Opening hours -->
+            <input type="radio" name="cfc-services" id="services-opening-hours" value="opening-hours" class="form-control" cf-label="Opening hours">
+            <!-- Account types -->
+            <input type="radio" name="cfc-services" id="services-account-types" value="account-types" class="form-control" cf-label="Account types">
+            <!-- Interest Rates -->
+            <input type="radio" name="cfc-services" id="services-interest-rates" value="interest-rates" class="form-control" cf-label="Interest Rates">
+            <!-- Live agent -->
+            <input type="radio" name="cfc-services" id="services-live-agent" value="live-agent" class="form-control" cf-label="Live agent">
+            <!-- Loans -->
+            <input type="radio" name="cfc-services" id="services-loans" value="loans" class="form-control" cf-label="Learn about our loans">
+
+
+
+            <!-- Authenticated Services -->
+            <!-- Bank settings -->
+            <input type="radio" name="cfc-services" id="services-bank-settings" value="bank-settings" class="form-control" cf-label="Bank settings">
+            <!-- Transfer money -->
+            <input type="radio" name="cfc-services" id="services-transfer-money" value="transfer-money" class="form-control" cf-label="Transfer money">  
+            <!-- Check Balance -->
+            <input type="radio" name="cfc-services" id="services-balance" value="check-balance" class="form-control" cf-label="Check Balance">
+            <!-- Deposit -->
+            <!-- <input type="radio" name="cfc-services" id="services-deposit" value="deposit" class="form-control" cf-label="Deposit"> -->
+
+        </fieldset>
+
+        <!-- Non authenticated responses  -->
+        <!-- Open account -->
+        <cf-robot-message value="..." cf-questions="To open an account, please visit the nearest branch. These details would be required of you <br>First Name<br>Last Name<br>Occupation<br>Valid form of identification<br>Contact<br>Residential Address<br>Passport sized pictures." cf-conditional-cfc-services="open-account" ></cf-robot-message>
+        <!-- Opening hours -->
+        <cf-robot-message value="..." cf-questions="We are open Mondays to Fridays from 9am to 4pm and Saturdays from 10am to 3pm." cf-conditional-cfc-services="opening-hours" ></cf-robot-message>
+        <!-- Nearest Branches -->
+        <cf-robot-message value="..." cf-questions="We have branches all over the city" cf-conditional-cfc-services="nearest-branch" ></cf-robot-message>
+        <!-- About bank -->
+        <cf-robot-message value="..." cf-questions="We are an African bank that offer a wide range of financial services which include loans, savings, online banking and many more" cf-conditional-cfc-services="about-bank" ></cf-robot-message>
+        <!-- Account types -->
+        <!-- <cf-robot-message value="..." cf-questions="We have the smart account offer, the student account offer and a savings account offer" cf-conditional-cfc-services="account-types" ></cf-robot-message> -->
+        <!-- Interest Rates -->
+        <cf-robot-message value="..." cf-questions="Our interest rates are <br><br> below 200GH is 0% <br><br> between 200GH and 1000GH is 2% <br><br between 1000GH and 4000GH is 3% <br><br> above 4000GH is 5% <br><br>" cf-conditional-cfc-services="interest-rates" ></cf-robot-message> 
+        <!-- Live agent -->
+        <cf-robot-message value="..." cf-questions="Please wait while we connect you to a live agent" cf-conditional-cfc-services="live-agent" ></cf-robot-message>  
+     
+        <fieldset cf-questions="Select an account type.">
+            <!-- Savings Account -->
+            <input type="radio" name="cfc-account-types"  value="savings-account" cf-conditional-cfc-services="account-types" cf-label="Savings account">
+            <!-- Smart Account -->
+            <input type="radio" name="cfc-account-types"  value="smart-account" cf-conditional-cfc-services="account-types" cf-label="Smart Account">
+            <!-- Student Account -->
+            <input type="radio" name="cfc-account-types"  value="student-account" cf-conditional-cfc-services="account-types" cf-label="Student Account">
+        </fieldset>
+
+        <cf-robot-message value="..." cf-questions="This is a type of account purposely for saving. You can start with as low as GH5 with no monthly account service charge. You also earn interest on your savings anually and track your savings with out mobile application." cf-conditional-cfc-account-types="savings-account" ></cf-robot-message>
+        <cf-robot-message value="..." cf-questions="This type of account requires a valid national ID. You would be able to transfer and receive money from abroad, withdraw from ATMs, pay nills and top up airtime. You would also be able to send money to any mobile wallet instantly. Minimum opening balance is GH20" cf-conditional-cfc-account-types="smart-account" ></cf-robot-message>
+        <cf-robot-message value="..." cf-questions="This type of account is for students. A student ID is needed to open this account. You would be able to transfer and receive money, purchase items online and wihtdraw from ATMS. Minimum opening ammount is GH20" cf-conditional-cfc-account-types="student-account" ></cf-robot-message>
+
+        <fieldset cf-questions="Select a loan type.">
+            <!-- Salary Backed Loan -->
+            <input type="radio" name="cfc-loans"  value="salary-loan" cf-conditional-cfc-services="loans" cf-label="Salary Backed Loan">
+            <!-- Employer Manager Personal Loan -->
+            <input type="radio" name="cfc-loans"  value="employee-loan" cf-conditional-cfc-services="loans" cf-label="Employee Manager Personal Loan">
+            <!-- Fast and easy loan -->
+            <input type="radio" name="cfc-loans"  value="fast-loan" cf-conditional-cfc-services="loans" cf-label="Fast and Easy Loan">
+        </fieldset>
+
+            <input type="text" class="form-control"  name="loanaccount1" cf-questions="This loan type requires no collateral. Repayment period is up to 48 months with loan amount up to GH150,000 and competitive interest rates. Enter your account number for a personalized loan offer or type 'quit' to return to menu." cf-conditional-cfc-loans="salary-loan">
+            <input type="text" class="form-control"  name="loanaccount2" cf-questions="This loan type requires no collateral. Repayment period is up to 60 months with loan amount up to GH200,000. You can top up your existing loan after 3 months. Debt service ratio is up to 50%. You need to have a minimum net monthly salary of GH700. Enter your account number for a personalized loan offer or type 'quit' to return to menu." cf-conditional-cfc-loans="employee-loan">
+            <input type="text" class="form-control"  name="loanaccount3" cf-questions="You can get a fast loan at the lowest REAL interest rate of 10%. No extra or hidden charges. Minimum amount is GH2000 with a loan period of 12 months. Enter your account number for a personalized loan offer or type 'quit' to return to menu. " cf-conditional-cfc-loans="fast-loan">
+
+    
+
+        <!-- Non authenticated responses -->
+        <!-- Open account -->
+        <!-- <input type="text" class="form-control" cf-questions="To open an account, please visit the nearest branch. These details would be required of you <br>First Name<br>Last Name<br>Occupation<br>Valid form of identification<br>Contact<br>Residential Address<br>Passport sized pictures." cf-conditional-cfc-services="open-account" > -->
+        <!-- Opening hours -->
+        <!-- <input type="text" class="form-control" cf-questions="We are open Mondays to Fridays from 9am to 4pm and Saturdays from 10am to 3pm." cf-conditional-cfc-services="opening-hours" > -->
+        <!-- Nearest Branches -->
+        <!-- <input type="text" class="form-control" cf-questions="We have branches all over the city" cf-conditional-cfc-services="nearest-branch" > -->
+        <!-- About bank -->
+        <!-- <input type="text" class="form-control" cf-questions="We are an African bank that offer a wide range of financial services which include loans, savings, online banking and many more" cf-conditional-cfc-services="about-bank" > -->
+        <!-- Account types -->
+        <!-- <input type="text" class="form-control" cf-questions="We have the smart account offer, the student account offer and a savings account offer" cf-conditional-cfc-services="account-types" > -->
+        <!-- Interest Rates -->
+        <!-- <input type="text" class="form-control" cf-questions="Our interest rates are <br><br> below 200GH is 0% <br><br> between 200GH and 1000GH is 2% <br><br between 1000GH and 4000GH is 3% <br><br> above 4000GH is 5% <br><br>" cf-conditional-cfc-services="interest-rates" > -->
+        <!-- Live agent -->
+        <!-- <input type="text" class="form-control" cf-questions="Please wait while i connect you to a live agent..." cf-conditional-cfc-services="live-agent" > -->
+
+
+        <!-- Authenticated responses -->
+        <!-- Transfer money -->
+        <fieldset>
+            <input type="text" class="form-control" id="transfer-money-account" name="transfer-money-account" cf-questions="Please enter your account number" cf-conditional-cfc-services="transfer-money">
+            <!-- <input type="text" class="form-control" id="transfer-money-phone" name="transfer-money-phone" cf-questions="Please enter your bank account phone number for verification" cf-conditional-cfc-services="transfer-money"> -->
+            <input type="text" class="form-control" id="transfer-money-recipient" name="transfer-money-recipient" cf-questions="Please enter recipient's account number" cf-conditional-cfc-services="transfer-money">
+            <input type="text" class="form-control" id="transfer-money-amount" name="transfer-money-amount" cf-questions="How much would you like to transfer?" cf-conditional-cfc-services="transfer-money">
+            <!-- <input type="text" class="form-control" id="transfer-money-otp" name="transfer-money-otp" cf-questions="Enter the one time password sent to your phone to confirm the transaction" cf-conditional-cfc-services="transfer-money"> -->
+            <!-- <input type="text" class="form-control" id="transfer-money-message" name="transfer-money-message" cf-questions="An amount of XXX has been transfered to XXXXXXXX" cf-conditional-cfc-services="transfer-money"> -->
+        </fieldset>
+
+        <!-- Check Balance -->
+        <fieldset>
+            <input type="text" class="form-control" id="check-balance-account" name="check-balance-account" cf-questions="Please enter your account number" cf-conditional-cfc-services="check-balance">
+            <!-- <input type="text" class="form-control" id="check-balance-phone" name="check-balance-phone" cf-questions="Please enter your account's phone number" cf-conditional-cfc-services="check-balance"> -->
+            <!-- <input type="text" class="form-control" id="check-balance-otp" name="check-balance-otp" cf-questions="Please enter the one time password sent for verification" cf-conditional-cfc-services="check-balance"> -->
+            <!-- <input type="text" class="form-control" id="check-balance-message" name="check-balance-message" cf-questions="Your balance is GH5000000" cf-conditional-cfc-services="check-balance"> -->
+        </fieldset>
+
+
+        <!-- <select cf-questions="Here are the bank settings." cf-conditional-cfc-services="bank-settings" name="cfc-bank-settings">
+            <option value="block-card" selected>Block Card</option>
+            <option value="travel-notification">Travel notification</option>
+            <option value="spend-limit">Spend limit</option>
+            <option value="freeze-account">Freeze account</option>
+        </select> -->
+
+        <!-- Bank settings -->
+        <fieldset cf-questions="Here are the bank settings.">
+            <!-- Block Card -->
+            <input type="radio" name="cfc-bank-settings" id="bank-setting-block-card" value="block-card" cf-conditional-cfc-services="bank-settings" cf-label="Block Card">
+            <!-- Travel notification -->
+            <input type="radio" name="cfc-bank-settings" id="bank-setting-travel-notification" value="travel-notification" cf-conditional-cfc-services="bank-settings" cf-label="Travel Notifications">
+            <!-- Spend limit -->
+            <input type="radio" name="cfc-bank-settings" id="bank-setting-spend-limit" value="spend-limit" cf-conditional-cfc-services="bank-settings" cf-label="Spend Limit">
+            <!-- Freeze Account -->
+            <input type="radio" name="cfc-bank-settings" id="bank-setting-freeze-account" value="freeze-account" cf-conditional-cfc-services="bank-settings" cf-label="Freeze account">
+            <!-- Profile Update -->
+            <!-- <input type="radio" name="cfc-bank-settings" id="bank-setting-profile-update" value="profile-update" cf-conditional-cfc-services="bank-settings" cf-label="Profile Update"> -->
+        </fieldset>
+
+             <!-- Block card -->
+        <fieldset>
+            <input type="text" class="form-control" name="block-card-account" id="block-card-account" cf-questions="Enter your account number" cf-conditional-cfc-bank-settings="block-card" >
+            <input type="text" class="form-control" name="block-card-card" id="block-card-card" cf-questions="Enter your card number" cf-conditional-cfc-bank-settings="block-card" >
+            <!-- <input type="text" class="form-control" name="block-card-phone" id="block-card-phone" cf-questions="Enter your account's phone" cf-conditional-cfc-bank-settings="block-card" > -->
+            <!-- <input type="text" class="form-control" name="block-card-otp" id="block-card-otp" cf-questions="Enter the one time password sent for verification" cf-conditional-cfc-bank-settings="block-card" > -->
+            <!-- <input type="text" class="form-control" name="block-card-message" id="block-card-message" cf-questions="Your card has been blocked" cf-conditional-cfc-bank-settings="block-card" > -->
+        </fieldset>
+
+        <!-- Travel notification -->
+        <fieldset>
+            <input type="text" class="form-control" name="travel-notification-account" id="travel-notification-account" cf-questions="Enter account number" cf-conditional-cfc-bank-settings="travel-notification" >
+            <input type="text" class="form-control" name="travel-notification-date" id="travel-notification-date" cf-questions="Enter date of travel" cf-conditional-cfc-bank-settings="travel-notification" >
+            <!-- <input type="text" class="form-control" name="travel-notification-phone" id="travel-notification-phone" cf-questions="Enter account's phone number" cf-conditional-cfc-bank-settings="travel-notification" > -->
+            <!-- <input type="text" class="form-control" name="travel-notification-otp" id="travel-notification-otp" cf-questions="Enter one time password sent to phone for verification" cf-conditional-cfc-bank-settings="travel-notification" > -->
+            <!-- <input type="text" class="form-control" name="travel-notification-message" id="travel-notification-message" cf-questions="Your travel notification has been set on this date" cf-conditional-cfc-bank-settings="travel-notification" > -->
+        </fieldset>
+
+        <!-- Spend limit -->
+        <fieldset>
+            <input type="text" class="form-control" name="spend-limit-account" id="spend-limit-account" cf-questions="Enter your account number" cf-conditional-cfc-bank-settings="spend-limit" >
+            <input type="text" class="form-control" name="spend-limit-card" id="spend-limit-card" cf-questions="Enter your card number" cf-conditional-cfc-bank-settings="spend-limit" >
+            <input type="number" class="form-control" name="spend-limit-amount" id="spend-limit-amount" cf-questions="Enter amount you want to set" cf-conditional-cfc-bank-settings="spend-limit" >
+            <!-- <input type="text" class="form-control" name="spend-limit-phone" id="spend-limit-phone" cf-questions="Enter your account's phone" cf-conditional-cfc-bank-settings="spend-limit" > -->
+            <!-- <input type="text" class="form-control" name="spend-limit-otp" id="spend-limit-otp" cf-questions="Enter the one time password sent for verification" cf-conditional-cfc-bank-settings="spend-limit" > -->
+            <!-- <input type="text" class="form-control" name="spend-limit-message" id="spend-limit-message" cf-questions="Your spend limit has been set at this amount" cf-conditional-cfc-bank-settings="spend-limit" > -->
+        </fieldset>
+
+        <!-- Freeze Account -->
+        <fieldset>
+            <input type="text" class="form-control" name="freeze-account-account" id="freeze-account-account" cf-questions="Enter your account number" cf-conditional-cfc-bank-settings="freeze-account">
+            <!-- <input type="text" class="form-control" name="freeze-account-phone" id="freeze-account-phone" cf-questions="Enter your account's phone number" cf-conditional-cfc-bank-settings="freeze-account">  -->
+            <!-- <input type="text" class="form-control" name="freeze-account-otp" id="freeze-account-otp" cf-questions="Enter the one time password sent for verification" cf-conditional-cfc-bank-settings="freeze-account">  -->
+            <!-- <input type="text" class="form-control" name="freeze-account-message" id="freeze-account-message" cf-questions="Your account has been frozen" cf-conditional-cfc-bank-settings="freeze-account">  -->
+        </fieldset>
+
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      
+      <div id="cf-context" class="dark-theme" role="cf-context" cf-context></div>
+    
+    <script type="text/javascript" src="/static/js/index.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/space10-community/conversational-form@1.0.1/dist/conversational-form.min.js" crossorigin></script>
+</body>
+</html>
